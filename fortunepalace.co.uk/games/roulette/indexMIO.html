@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ROULETTE ROYALE</title>
+<link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<link rel="stylesheet" href="css/orientation_utils.css" type="text/css">
+<link rel="stylesheet" href="css/ios_fullscreen.css" type="text/css">
+<link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+<meta name="msapplication-tap-highlight" content="no" />
+<script type="3c2fee2c9224ddb2bd31e8f7-text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="3c2fee2c9224ddb2bd31e8f7-text/javascript" src="js/createjs-2015.11.26.min.js"></script>
+<script type="3c2fee2c9224ddb2bd31e8f7-text/javascript" src="js/howler.min.js"></script>
+<script type="3c2fee2c9224ddb2bd31e8f7-text/javascript" src="js/main.js"></script>
+<script async src='cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body ondragstart="if (!window.__cfRLUnblockHandlers) return false; return false;" ondrop="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-3c2fee2c9224ddb2bd31e8f7-="">
+<div style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%"></div>
+<script type="3c2fee2c9224ddb2bd31e8f7-text/javascript">
+            $(document).ready(function(){
+                     var oMain = new CMain({
+                                            money: 1000,         //STARING CREDIT FOR THE USER
+                                            min_bet: 0.1,       //MINIMUM BET
+                                            max_bet: 1000,      //MAXIMUM BET
+                                            time_bet: 0,        //TIME TO WAIT FOR A BET IN MILLISECONDS. SET 0 IF YOU DON'T WANT BET LIMIT
+                                            time_winner: 1500,  //TIME FOR WINNER SHOWING IN MILLISECONDS
+                                            win_occurrence: -1, //Win occurrence percentage (100 = always win).
+                                                                //SET THIS VALUE TO -1 IF YOU WANT WIN OCCURRENCE STRICTLY RELATED TO PLAYER BET ( SEE DOCUMENTATION)
+                                            casino_cash:1000,   //The starting casino cash that is recharged by the money lost by the user
+                                            fullscreen:true, //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
+                                            check_orientation:true,     //SET TO FALSE IF YOU DON'T WANT TO SHOW ORIENTATION ALERT
+                                            show_credits:true,                     //ENABLE/DISABLE CREDITS BUTTON IN THE MAIN SCREEN
+                                            num_hand_before_ads:10                 //NUMBER OF HANDS PLAYED BEFORE AD SHOWN
+                                            //
+                                            //// THIS FUNCTIONALITY IS ACTIVATED ONLY WITH CTL ARCADE PLUGIN.///////////////////////////
+                                            /////////////////// YOU CAN GET IT AT: /////////////////////////////////////////////////////////
+                                            // http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421 ///////////
+                                });
+
+
+                     $(oMain).on("recharge", function(evt) {
+                             //alert("recharge");
+                     });
+
+                     $(oMain).on("start_session", function(evt) {
+                            if(getParamValue('ctl-arcade') === "true"){
+                                parent.__ctlArcadeStartSession();
+                            }
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                     });
+
+                    $(oMain).on("end_session", function(evt) {
+                            if(getParamValue('ctl-arcade') === "true"){
+                                parent.__ctlArcadeEndSession();
+                            }
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+
+                    $(oMain).on("bet_placed", function (evt, iTotBet) {
+
+                        //...ADD YOUR CODE HERE EVENTUALLY
+                    });
+
+                    $(oMain).on("save_score", function(evt,iMoney) {
+
+                            if(getParamValue('ctl-arcade') === "true"){
+                                parent.__ctlArcadeSaveScore({score:iMoney});
+                            }
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                     });
+
+                     $(oMain).on("show_interlevel_ad", function(evt) {
+                            if(getParamValue('ctl-arcade') === "true"){
+                                parent.__ctlArcadeShowInterlevelAD();
+                            }
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                     });
+
+                     $(oMain).on("share_event", function(evt,iMoney) {
+                            if(getParamValue('ctl-arcade') === "true"){
+                                parent.__ctlArcadeShareEvent({ img:"200x200.jpg",
+                                                                title:TEXT_CONGRATULATIONS,
+                                                                msg:TEXT_SHARE_1 + iMoney + TEXT_SHARE_2,
+                                                                msg_share:TEXT_SHARE_3 + iMoney + TEXT_SHARE_4
+                                                            });
+                            }
+                            //...ADD YOUR CODE HERE EVENTUALLY
+                     });
+
+                     if(isIOS()){
+                         setTimeout(function(){sizeHandler();},200);
+                     }else{
+                         sizeHandler();
+                     }
+           });
+
+        </script>
+<div class="check-fonts">
+<p class="check-font-1">test 1</p>
+<p class="check-font-2">test 2</p>
+</div>
+<canvas id="canvas" class='ani_hack' width="1280" height="768"> </canvas>
+<div data-orientation="landscape" class="orientation-msg-container"><p class="orientation-msg-text">Please rotate your device</p></div>
+<div id="block_game" style="position: fixed; background-color: transparent; top: 0px; left: 0px; width: 100%; height: 100%; display:none"></div>
+<script src="cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="3c2fee2c9224ddb2bd31e8f7-|49" defer=""></script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'6b7fb01b899bfc81',m:'LrKLCUmZp0QjewPfhZL52TSwDBeZ64qoCvTtN0FFlAI-1638564842-0-AWxY5bS5K+qcndkhFmDrm4/RYyuM0ZLwJ8vbcfKk08lGmoCREu+eeRb2fF8LM3rTFmVHHDaFAb+qDJEpJKBhGl5bl0IiR8FeMdNd3XUhzmQk+a83FKTGggfLi9bkIVEgcHNsSkG/5hPP8c0jpjcBYlg=',s:[0x6972b1cf5f,0x65ab73e7fa],}})();</script><script defer src="static.cloudflareinsights.com/beacon.min.js/v64f9daad31f64f81be21cbef6184a5e31634941392597_NON_MIN.js" crossorigin="anonymous"></script>
+</body>
+</html>
